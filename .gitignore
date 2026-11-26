@@ -1,0 +1,25 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Private files
+.env
+.env.*
+*.pem
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Local databases and cache
+*.db
+*.sqlite
+*.sqlite3

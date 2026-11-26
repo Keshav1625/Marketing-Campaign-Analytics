@@ -1,0 +1,64 @@
+{
+  "marketing_channels.csv": {
+    "grain": "One row per marketing channel.",
+    "fields": {
+      "channel_id": "Primary key identifying a marketing channel.",
+      "channel_name": "Marketing channel name.",
+      "base_ctr": "Synthetic reference click-through rate used when generating daily data; not a reported campaign KPI.",
+      "click_to_lead_rate": "Synthetic reference click-to-lead rate used in data generation; not a measured outcome.",
+      "base_cpc": "Synthetic reference cost per click in INR used in data generation."
+    }
+  },
+  "campaigns.csv": {
+    "grain": "One row per campaign.",
+    "fields": {
+      "campaign_id": "Primary key for a campaign.",
+      "campaign_name": "Fictional campaign name.",
+      "channel_id": "Foreign key to marketing_channels.channel_id.",
+      "objective": "Campaign objective.",
+      "product_category": "Promoted product category.",
+      "target_city": "Primary target city.",
+      "region": "Broad Indian region for the target city.",
+      "start_date": "Campaign start date.",
+      "end_date": "Campaign end date.",
+      "planned_budget_inr": "Planned campaign budget in INR."
+    }
+  },
+  "daily_performance.csv": {
+    "grain": "One row per campaign per reported performance date (not every calendar day is reported).",
+    "fields": {
+      "performance_id": "Primary key for a daily performance record.",
+      "campaign_id": "Foreign key to campaigns.campaign_id.",
+      "performance_date": "Date of the reported advertising performance.",
+      "impressions": "Number of ad impressions.",
+      "clicks": "Number of clicks; always less than or equal to impressions.",
+      "ad_spend_inr": "Daily advertising spend in INR.",
+      "device": "Device category.",
+      "region": "Region associated with the campaign."
+    }
+  },
+  "leads.csv": {
+    "grain": "One row per generated lead.",
+    "fields": {
+      "lead_id": "Primary key for a lead.",
+      "campaign_id": "Foreign key to campaigns.campaign_id.",
+      "lead_date": "Date the lead was generated.",
+      "customer_age_group": "Synthetic customer age band.",
+      "customer_segment": "Synthetic customer segment.",
+      "city": "City associated with the lead.",
+      "lead_source": "Channel ID associated with the lead; foreign key to marketing_channels.channel_id.",
+      "device": "Device used by the lead."
+    }
+  },
+  "conversions.csv": {
+    "grain": "One row per converted lead; a lead can have at most one conversion record in this dataset.",
+    "fields": {
+      "conversion_id": "Primary key for a conversion.",
+      "lead_id": "Foreign key to leads.lead_id.",
+      "conversion_date": "Conversion date; generated 1–30 days after lead date.",
+      "conversion_type": "First Purchase or Repeat Purchase.",
+      "order_value_inr": "Attributed order value in INR; synthetic revenue proxy.",
+      "product_category": "Category purchased."
+    }
+  }
+}

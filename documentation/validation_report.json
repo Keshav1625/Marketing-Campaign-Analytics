@@ -1,0 +1,50 @@
+{
+  "dataset_type": "Synthetic, fictional Indian retail marketing business dataset",
+  "random_seed": 20261112,
+  "date_coverage": "2024-01-01 to 2025-12-31 campaign period",
+  "clean_row_counts": {
+    "marketing_channels.csv": 6,
+    "campaigns.csv": 60,
+    "daily_performance.csv": 4183,
+    "leads.csv": 3000,
+    "conversions.csv": 1200
+  },
+  "raw_row_counts": {
+    "marketing_channels.csv": 6,
+    "campaigns.csv": 60,
+    "daily_performance.csv": 4195,
+    "leads.csv": 3008,
+    "conversions.csv": 1200
+  },
+  "checks": {
+    "campaign_ids_unique": true,
+    "performance_ids_unique": true,
+    "lead_ids_unique": true,
+    "conversion_ids_unique": true,
+    "daily_clicks_le_impressions": true,
+    "daily_spend_nonnegative": true,
+    "campaign_dates_valid": true,
+    "daily_campaign_fk_valid": true,
+    "lead_campaign_fk_valid": true,
+    "lead_channel_fk_valid": true,
+    "conversion_lead_fk_valid": true,
+    "conversion_lead_unique": true,
+    "conversion_dates_after_lead_dates": true
+  },
+  "known_raw_issues": [
+    "24 missing city values in leads.csv",
+    "30 missing device values in daily_performance.csv",
+    "35 customer_segment values with inconsistent casing/whitespace",
+    "2 marketing channel names with inconsistent casing/whitespace",
+    "12 duplicate rows appended to daily_performance.csv",
+    "8 duplicate rows appended to leads.csv"
+  ],
+  "notes": [
+    "All business entities and performance outcomes are synthetic and must be presented as simulated portfolio data, not real company results.",
+    "Daily performance is sampled reporting days during campaign dates; absence of a date means no row was recorded, not necessarily zero activity.",
+    "ROAS can be calculated as attributed order value divided by ad spend, but attribution is simplified to campaign-linked synthetic data.",
+    "Cost per lead and cost per conversion can be calculated. True CAC is not established because customer identity and complete acquisition costs are not available.",
+    "Marketing ROI is not fully supported because product costs, gross margin and non-advertising costs are not included.",
+    "Raw folder is intentionally imperfect for preprocessing practice. Cleaned folder is normalized and validated."
+  ]
+}
